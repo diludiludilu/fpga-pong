@@ -1,20 +1,3 @@
-# Local environment files (may contain API keys, passwords, or tokens)
-.env
-.env.*
-!.env.example
-!.env.template
-
-# Private keys and certificate bundles
-*.pem
-*.key
-*.p12
-*.pfx
-*.jks
-*.keystore
-
-# Personal Vivado license files
-*.lic
-
 # Vivado generated files and folders
 .Xil/
 *.jou

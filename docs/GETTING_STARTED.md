@@ -135,15 +135,30 @@ The team should agree before committing the Vivado .xpr project file. Generated 
 | docs/ | Project plan, architecture, setup notes, and evidence |
 | vivado/ | Optional Vivado project file, only if the team agrees to track it |
 
-## 9. Do not upload
+## 9. Do not upload private or generated files
 
+Never commit or push:
+
+- Local environment files such as `.env`, `.env.local`, or `.env.production`.
+- Passwords, API keys, GitHub tokens, SSH private keys, or other credentials.
+- Personal Vivado license files such as `.lic`.
+- Private key/certificate files such as `.pem`, `.key`, `.p12`, or `.pfx`.
 - Vivado cache, run, and temporary folders.
-- .jou and .log files.
-- Personal license files such as .lic.
-- Passwords, tokens, or other private credentials.
+- `.jou`, `.log`, and other generated files.
 - Large generated files unless the team specifically decides they are required.
 
-The repository has a .gitignore file for common Vivado-generated files. Always check git status before committing.
+### Do we need a .env file for this FPGA project?
+
+Normally, no. This is a Verilog/Vivado FPGA project, so the source code, testbenches, constraints, and Vivado project files do not usually need a `.env` file. Do not create one unless a specific tool or script in this project genuinely requires environment variables.
+
+If a future script needs configuration:
+
+1. Keep real secrets and machine-specific values in a local `.env` file.
+2. Never commit that real `.env` file.
+3. If teammates need to know which variable names are required, create an `.env.example` containing placeholder values only, never real credentials.
+4. Share required setup instructions in the documentation, not passwords or tokens in GitHub.
+
+The repository's `.gitignore` excludes local environment files, private keys, Vivado license files, and common Vivado-generated files. **Important:** `.gitignore` only prevents new untracked files from being added; it does not remove a file that was already committed. Always inspect `git status` and the staged file list before committing.
 
 ## 10. First tasks for every member
 
